@@ -9,10 +9,10 @@
     - name: Create conda folder
       become: True
       file:
-        path: /opt/miniconda3
+        path: /tmp/miniconda3
         state: directory
         owner: ubuntu
-        mode: 755
+        mode: 0755
         recurse: yes
     - name: Run the installer
       shell: /tmp/install-miniconda.sh -b -u -p /opt/miniconda3
@@ -26,12 +26,12 @@
     - name: conda - read permission for all
       become: True
       file:
-        path: /opt/miniconda3
+        path: /tmp/miniconda3
         mode: +r
         recurse: yes
     - name: conda - execution permission for all
       become: True
       file:
-        path: /opt/miniconda3/bin
+        path: /tmp/miniconda3/bin
         mode: +x
         recurse: yes
